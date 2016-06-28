@@ -58,6 +58,15 @@ public class CalculationModule  {
 		 
 		 mapValues = new HashMap<String, Map<Date,BigDecimal>>();
 		 updateFactorMap();
+		 
+		 try {
+			Connection con = ConnectionFactory.getConnection();
+			new InstrumentDao(con).createTable();
+			new InstrumentDao(con).addInstrument(1, "INSTRUMENT1", 2.2);
+			new InstrumentDao(con).addInstrument(2, "INSTRUMENT2", 1.5);
+		} catch (SQLException e) {
+		}
+		 
 	}
 
 	
